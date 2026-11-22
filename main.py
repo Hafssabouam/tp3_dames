@@ -18,6 +18,16 @@ def main() -> int:
 
     while partie.gagnant is None:
         texte = input(f"{partie.trait} > ")
+        if texte.strip().lower() == "sauver":
+           partie.sauvegarder("partie.json")
+           print("Partie sauvegardée.")
+           continue
+
+        if texte.strip().lower() == "reprendre":
+           partie = Partie.charger("partie.json")
+           print("Partie reprise.")
+           print(partie.plateau)
+           continue
 
         if texte.strip().lower() == "quitter":
             print("Partie abandonnée.")
